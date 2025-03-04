@@ -1,0 +1,9 @@
+[DEBUG] Init: Starting application
+[DEBUG] Window: Video window XID: 100663299
+[DEBUG] Pipeline: Creating pipeline with MJPG format at 1920x1080
+[DEBUG] Pipeline: Pipeline created successfully
+[DEBUG] KeyPress: ESC key pressed, quitting
+[DEBUG] Cleanup: Cleaning up and quitting
+[DEBUG] Cleanup: Setting pipeline to NULL state
+[DEBUG] Cleanup: Unreferencing pipeline
+[DEBUG] Cleanup: Quitting GTK main loop

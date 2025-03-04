@@ -1,40 +1,49 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import DetroitOverlay from './components/DetroitOverlay';
+import CommandDashboard from './components/CommandDashboard';
+import AIController from './components/AIController';
 
 function App() {
-  const [videoStream, setVideoStream] = useState(null);
-
-  useEffect(() => {
-    // Set up WebSocket connection to receive video stream
-    const connectToVideoStream = () => {
-      try {
-        // The video server will be running on port 8080
-        const streamUrl = 'http://localhost:8080/video_feed';
-        setVideoStream(streamUrl);
-        console.log('Connected to video stream');
-      } catch (error) {
-        console.error('Error connecting to video stream:', error);
-        // Try to reconnect after 2 seconds
-        setTimeout(connectToVideoStream, 2000);
-      }
-    };
-
-    connectToVideoStream();
-  }, []);
+  // Import the image from the public folder
+  const backgroundImage = process.env.PUBLIC_URL + '/image.png';
 
   return (
-    <div className="App">
-      <div className="video-container relative">
-        {videoStream && (
+    <Router>
+      <div className="App">
+        <div className="video-container relative">
           <img 
-            src={videoStream} 
-            alt="Video Feed" 
+            src={backgroundImage} 
+            alt="Background" 
             className="w-full h-screen object-cover"
           />
-        )}
-        <DetroitOverlay />
+          <Routes>
+            <Route 
+              path="/" 
+              element={
+                <>
+                  <DetroitOverlay />
+                  {/* Center small white plus sign */}
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div className="text-white text-2xl font-thin">+</div>
+                  </div>
+                  <AIController useMockData={true} />
+                </>
+              } 
+            />
+            <Route 
+              path="/command" 
+              element={
+                <>
+                  <CommandDashboard />
+                  <AIController useMockData={true} />
+                </>
+              } 
+            />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 

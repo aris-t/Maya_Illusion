@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Video Overlay</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: transparent;
+            font-family: Arial, sans-serif;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .glass-pane {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70%;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.25);
+            border-radius: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .test-message {
+            font-size: 48px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            letter-spacing: 2px;
+        }
+        
+        .timestamp {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 18px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border-left: 3px solid #00ff00;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+        
+        .controls {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+        
+        .controls button {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: 2px solid white;
+            border-radius: 50px;
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            pointer-events: auto;
+            transition: all 0.2s ease;
+        }
+        
+        .controls button:hover {
+            background-color: rgba(50, 50, 50, 0.8);
+            transform: scale(1.05);
+        }
+        
+        .recording {
+            background-color: rgba(255, 0, 0, 0.6) !important;
+            border-color: #ff3333 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <div class="glass-pane">
+            <div class="test-message">THIS IS A TEST</div>
+        </div>
+        
+        <div class="timestamp" id="clock">00:00:00</div>
+        
+        <div class="controls">
+            <button id="recordBtn">Record</button>
+            <button id="snapshotBtn">Snapshot</button>
+        </div>
+    </div>
+    
+    <script>
+        // Update the clock
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('clock').textContent = now.toLocaleTimeString();
+        }
+        
+        // Initialize clock and set interval
+        updateClock();
+        setInterval(updateClock, 1000);
+        
+        // Record button functionality
+        let isRecording = false;
+        const recordBtn = document.getElementById('recordBtn');
+        
+        recordBtn.addEventListener('click', function() {
+            isRecording = !isRecording;
+            if (isRecording) {
+                this.textContent = 'Stop Recording';
+                this.classList.add('recording');
+                console.log('Recording started');
+            } else {
+                this.textContent = 'Record';
+                this.classList.remove('recording');
+                console.log('Recording stopped');
+            }
+        });
+        
+        // Snapshot button functionality
+        const snapshotBtn = document.getElementById('snapshotBtn');
+        
+        snapshotBtn.addEventListener('click', function() {
+            console.log('Snapshot taken at ' + new Date().toISOString());
+        });
+    </script>
+</body>
+</html>
