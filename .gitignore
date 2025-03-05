@@ -122,3 +122,23 @@ saved_models/
 weights/
 pretrained/
 *.ckpt
+
+# Build files
+/build/
+/cef_libs/
+*.o
+*.so
+*.a
+
+# CEF downloads
+cef_binary_*
+
+# Temporary files
+.cache/
+.temp/
+CMakeCache.txt
+CMakeFiles/
+
+# IDE files
+.vscode/
+.idea/
