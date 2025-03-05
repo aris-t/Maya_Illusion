@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Video Overlay</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: transparent;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  
+  <script>
+    // Fallback for debugging
+    window.onload = function() {
+      console.log('Window loaded');
+      setTimeout(function() {
+        if (!document.querySelector('[data-react-initialized="true"]')) {
+          console.log('React appears not to have initialized, creating fallback element');
+          const fallbackDiv = document.createElement('div');
+          fallbackDiv.style.position = 'fixed';
+          fallbackDiv.style.top = '50%';
+          fallbackDiv.style.left = '50%';
+          fallbackDiv.style.transform = 'translate(-50%, -50%)';
+          fallbackDiv.style.backgroundColor = 'red';
+          fallbackDiv.style.color = 'white';
+          fallbackDiv.style.padding = '20px';
+          fallbackDiv.style.fontSize = '24px';
+          fallbackDiv.style.zIndex = '999999';
+          fallbackDiv.textContent = 'FALLBACK - REACT NOT INITIALIZED';
+          document.body.appendChild(fallbackDiv);
+        }
+      }, 2000);
+    };
+  </script>
+</body>
+</html>
