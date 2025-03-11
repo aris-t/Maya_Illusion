@@ -1,0 +1,349 @@
+2025-03-05 15:08:11,685 - ShmVideoReceiver - INFO - Starting SHM receiver on /tmp/video-stream, 1920x1080, format=BGR
+2025-03-05 15:08:11,685 - ShmVideoReceiver - INFO - Initializing ShmVideoReceiver: path=/tmp/video-stream, resolution=1920x1080
+2025-03-05 15:08:11,685 - ShmVideoReceiver - DEBUG - GStreamer pipeline: shmsrc socket-path=/tmp/video-stream ! video/x-raw,format=BGR,width=1920,height=1080 ! videoconvert ! appsink name=sink emit-signals=True sync=false
+2025-03-05 15:08:11,690 - ShmVideoReceiver - ERROR - Initialization error: gst_parse_error: no element "shmsrc" (1)
+2025-03-05 15:08:11,690 - ShmVideoReceiver - ERROR - Traceback (most recent call last):
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/shm-receiver-debug.py", line 62, in __init__
+    self.pipeline = Gst.parse_launch(pipeline_str)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+gi.repository.GLib.GError: gst_parse_error: no element "shmsrc" (1)
+
+2025-03-05 15:08:11,690 - ShmVideoReceiver - ERROR - Exception in main loop: gst_parse_error: no element "shmsrc" (1)
+2025-03-05 15:08:11,691 - ShmVideoReceiver - ERROR - Traceback (most recent call last):
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/shm-receiver-debug.py", line 301, in <module>
+    receiver = ShmVideoReceiver(
+               ^^^^^^^^^^^^^^^^^
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/shm-receiver-debug.py", line 62, in __init__
+    self.pipeline = Gst.parse_launch(pipeline_str)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+gi.repository.GLib.GError: gst_parse_error: no element "shmsrc" (1)
+
+2025-03-05 15:08:11,691 - ShmVideoReceiver - INFO - Application shutdown complete
+2025-03-05 15:08:28,984 - ShmVideoReceiver - INFO - Starting SHM receiver on /tmp/video-stream, 1920x1080, format=BGR
+2025-03-05 15:08:28,985 - ShmVideoReceiver - INFO - Initializing ShmVideoReceiver: path=/tmp/video-stream, resolution=1920x1080
+2025-03-05 15:08:28,985 - ShmVideoReceiver - DEBUG - GStreamer pipeline: shmsrc socket-path=/tmp/video-stream ! video/x-raw,format=BGR,width=1920,height=1080 ! videoconvert ! appsink name=sink emit-signals=True sync=false
+2025-03-05 15:08:28,989 - ShmVideoReceiver - INFO - ShmVideoReceiver initialized successfully
+2025-03-05 15:08:28,989 - ShmVideoReceiver - INFO - Starting ShmVideoReceiver
+2025-03-05 15:08:28,990 - ShmVideoReceiver - ERROR - Failed to start pipeline
+2025-03-05 15:08:28,990 - ShmVideoReceiver - ERROR - Exception in main loop: Failed to start pipeline
+2025-03-05 15:08:28,990 - ShmVideoReceiver - ERROR - Traceback (most recent call last):
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/shm-receiver-debug.py", line 307, in <module>
+    receiver.start()
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/shm-receiver-debug.py", line 215, in start
+    raise RuntimeError("Failed to start pipeline")
+RuntimeError: Failed to start pipeline
+
+2025-03-05 15:08:28,990 - ShmVideoReceiver - INFO - Stopping ShmVideoReceiver
+2025-03-05 15:08:28,990 - ShmVideoReceiver - DEBUG - Pipeline set to NULL state
+2025-03-05 15:08:28,990 - ShmVideoReceiver - INFO - Stats: Uptime=0.0s, Frames=0, FPS=0.00, Drops=0 (0.0%)
+2025-03-05 15:08:28,990 - ShmVideoReceiver - WARNING - Shared memory socket /tmp/video-stream does not exist!
+2025-03-05 15:08:28,990 - ShmVideoReceiver - INFO - ShmVideoReceiver stopped
+2025-03-05 15:08:28,991 - ShmVideoReceiver - INFO - Application shutdown complete
+2025-03-05 15:08:39,301 - ShmVideoReceiver - INFO - Starting SHM receiver on /tmp/video-stream, 1920x1080, format=BGR
+2025-03-05 15:08:39,301 - ShmVideoReceiver - INFO - Initializing ShmVideoReceiver: path=/tmp/video-stream, resolution=1920x1080
+2025-03-05 15:08:39,301 - ShmVideoReceiver - DEBUG - GStreamer pipeline: shmsrc socket-path=/tmp/video-stream ! video/x-raw,format=BGR,width=1920,height=1080 ! videoconvert ! appsink name=sink emit-signals=True sync=false
+2025-03-05 15:08:39,306 - ShmVideoReceiver - INFO - ShmVideoReceiver initialized successfully
+2025-03-05 15:08:39,306 - ShmVideoReceiver - INFO - Starting ShmVideoReceiver
+2025-03-05 15:08:39,306 - ShmVideoReceiver - ERROR - Failed to start pipeline
+2025-03-05 15:08:39,306 - ShmVideoReceiver - ERROR - Exception in main loop: Failed to start pipeline
+2025-03-05 15:08:39,306 - ShmVideoReceiver - ERROR - Traceback (most recent call last):
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/shm-receiver-debug.py", line 307, in <module>
+    receiver.start()
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/shm-receiver-debug.py", line 215, in start
+    raise RuntimeError("Failed to start pipeline")
+RuntimeError: Failed to start pipeline
+
+2025-03-05 15:08:39,307 - ShmVideoReceiver - INFO - Stopping ShmVideoReceiver
+2025-03-05 15:08:39,307 - ShmVideoReceiver - DEBUG - Pipeline set to NULL state
+2025-03-05 15:08:39,307 - ShmVideoReceiver - INFO - Stats: Uptime=0.0s, Frames=0, FPS=0.00, Drops=0 (0.0%)
+2025-03-05 15:08:39,307 - ShmVideoReceiver - WARNING - Shared memory socket /tmp/video-stream does not exist!
+2025-03-05 15:08:39,307 - ShmVideoReceiver - INFO - ShmVideoReceiver stopped
+2025-03-05 15:08:39,307 - ShmVideoReceiver - INFO - Application shutdown complete
+2025-03-05 15:09:54,388 - ShmVideoReceiver - INFO - Starting SHM receiver on /tmp/video-stream, 1920x1080, format=BGR
+2025-03-05 15:09:54,388 - ShmVideoReceiver - INFO - Initializing ShmVideoReceiver: path=/tmp/video-stream, resolution=1920x1080
+2025-03-05 15:09:54,388 - ShmVideoReceiver - DEBUG - GStreamer pipeline: shmsrc socket-path=/tmp/video-stream ! video/x-raw,format=BGR,width=1920,height=1080 ! videoconvert ! appsink name=sink emit-signals=True sync=false
+2025-03-05 15:09:54,392 - ShmVideoReceiver - INFO - ShmVideoReceiver initialized successfully
+2025-03-05 15:09:54,392 - ShmVideoReceiver - INFO - Starting ShmVideoReceiver
+2025-03-05 15:09:54,392 - ShmVideoReceiver - INFO - Pipeline state change result: <enum GST_STATE_CHANGE_ASYNC of type Gst.StateChangeReturn>
+2025-03-05 15:09:54,392 - ShmVideoReceiver - DEBUG - GLib MainLoop starting
+2025-03-05 15:09:54,393 - ShmVideoReceiver - INFO - Stats: Uptime=0.0s, Frames=0, FPS=0.00, Drops=0 (0.0%)
+2025-03-05 15:09:54,441 - ShmVideoReceiver - DEBUG - Pipeline state changed from NULL to READY
+2025-03-05 15:09:54,478 - ShmVideoReceiver - ERROR - GStreamer error: Filter caps do not completely specify the output format
+2025-03-05 15:09:54,489 - ShmVideoReceiver - DEBUG - GStreamer error debug info: ../plugins/elements/gstcapsfilter.c(458): gst_capsfilter_prepare_buf (): /GstPipeline:pipeline0/GstCapsFilter:capsfilter0:
+Output caps are unfixed: video/x-raw, width=(int)1920, height=(int)1080, framerate=(fraction)[ 0/1, 2147483647/1 ], format=(string)BGR
+2025-03-05 15:09:54,510 - ShmVideoReceiver - ERROR - GStreamer error: Internal data stream error.
+2025-03-05 15:09:54,520 - ShmVideoReceiver - DEBUG - GStreamer error debug info: ../libs/gst/base/gstbasesrc.c(3127): gst_base_src_loop (): /GstPipeline:pipeline0/GstShmSrc:shmsrc0:
+streaming stopped, reason error (-5)
+2025-03-05 15:09:59,142 - ShmVideoReceiver - INFO - Keyboard interrupt received
+2025-03-05 15:09:59,142 - ShmVideoReceiver - INFO - Stopping ShmVideoReceiver
+2025-03-05 15:09:59,142 - ShmVideoReceiver - DEBUG - MainLoop quit
+2025-03-05 15:09:59,142 - ShmVideoReceiver - DEBUG - GLib MainLoop exited
+2025-03-05 15:09:59,142 - ShmVideoReceiver - DEBUG - MainLoop thread joined
+2025-03-05 15:09:59,430 - ShmVideoReceiver - DEBUG - Stats thread joined
+2025-03-05 15:09:59,431 - ShmVideoReceiver - DEBUG - Pipeline set to NULL state
+2025-03-05 15:09:59,431 - ShmVideoReceiver - INFO - Stats: Uptime=5.0s, Frames=0, FPS=0.00, Drops=0 (0.0%)
+2025-03-05 15:09:59,432 - ShmVideoReceiver - INFO - ShmVideoReceiver stopped
+2025-03-05 15:09:59,432 - ShmVideoReceiver - INFO - Application shutdown complete
+2025-03-05 15:12:21,737 - ShmVideoReceiver - INFO - Starting SHM receiver on /tmp/video-stream, 1920x1080, format=BGR
+2025-03-05 15:12:21,737 - ShmVideoReceiver - INFO - Initializing ShmVideoReceiver: path=/tmp/video-stream, resolution=1920x1080
+2025-03-05 15:12:21,737 - ShmVideoReceiver - DEBUG - GStreamer pipeline: shmsrc socket-path=/tmp/video-stream ! video/x-raw,format=BGR,width=1920,height=1080,framerate=30/1 ! videoconvert ! appsink name=sink emit-signals=True sync=false
+2025-03-05 15:12:21,741 - ShmVideoReceiver - INFO - ShmVideoReceiver initialized successfully
+2025-03-05 15:12:21,741 - ShmVideoReceiver - INFO - Starting ShmVideoReceiver
+2025-03-05 15:12:21,742 - ShmVideoReceiver - ERROR - Failed to start pipeline
+2025-03-05 15:12:21,742 - ShmVideoReceiver - ERROR - Exception in main loop: Failed to start pipeline
+2025-03-05 15:12:21,742 - ShmVideoReceiver - ERROR - Traceback (most recent call last):
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/shm-receiver-debug.py", line 307, in <module>
+    receiver.start()
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/shm-receiver-debug.py", line 215, in start
+    raise RuntimeError("Failed to start pipeline")
+RuntimeError: Failed to start pipeline
+
+2025-03-05 15:12:21,742 - ShmVideoReceiver - INFO - Stopping ShmVideoReceiver
+2025-03-05 15:12:21,742 - ShmVideoReceiver - DEBUG - Pipeline set to NULL state
+2025-03-05 15:12:21,742 - ShmVideoReceiver - INFO - Stats: Uptime=0.0s, Frames=0, FPS=0.00, Drops=0 (0.0%)
+2025-03-05 15:12:21,742 - ShmVideoReceiver - INFO - ShmVideoReceiver stopped
+2025-03-05 15:12:21,742 - ShmVideoReceiver - INFO - Application shutdown complete
+2025-03-05 15:12:37,857 - ShmVideoReceiver - INFO - Starting SHM receiver on /tmp/video-stream, 1920x1080, format=BGR
+2025-03-05 15:12:37,857 - ShmVideoReceiver - INFO - Initializing ShmVideoReceiver: path=/tmp/video-stream, resolution=1920x1080
+2025-03-05 15:12:37,857 - ShmVideoReceiver - DEBUG - GStreamer pipeline: shmsrc socket-path=/tmp/video-stream ! video/x-raw,format=BGR,width=1920,height=1080,framerate=30/1 ! videoconvert ! appsink name=sink emit-signals=True sync=false
+2025-03-05 15:12:37,861 - ShmVideoReceiver - INFO - ShmVideoReceiver initialized successfully
+2025-03-05 15:12:37,861 - ShmVideoReceiver - INFO - Starting ShmVideoReceiver
+2025-03-05 15:12:37,862 - ShmVideoReceiver - ERROR - Failed to start pipeline
+2025-03-05 15:12:37,862 - ShmVideoReceiver - ERROR - Exception in main loop: Failed to start pipeline
+2025-03-05 15:12:37,862 - ShmVideoReceiver - ERROR - Traceback (most recent call last):
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/shm-receiver-debug.py", line 307, in <module>
+    receiver.start()
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/shm-receiver-debug.py", line 215, in start
+    raise RuntimeError("Failed to start pipeline")
+RuntimeError: Failed to start pipeline
+
+2025-03-05 15:12:37,862 - ShmVideoReceiver - INFO - Stopping ShmVideoReceiver
+2025-03-05 15:12:37,862 - ShmVideoReceiver - DEBUG - Pipeline set to NULL state
+2025-03-05 15:12:37,862 - ShmVideoReceiver - INFO - Stats: Uptime=0.0s, Frames=0, FPS=0.00, Drops=0 (0.0%)
+2025-03-05 15:12:37,862 - ShmVideoReceiver - INFO - ShmVideoReceiver stopped
+2025-03-05 15:12:37,862 - ShmVideoReceiver - INFO - Application shutdown complete
+2025-03-05 15:14:40,609 - ShmVideoReceiver - INFO - Starting SHM receiver on /tmp/video-stream, 1920x1080, format=BGR
+2025-03-05 15:14:40,609 - ShmVideoReceiver - INFO - Initializing ShmVideoReceiver: path=/tmp/video-stream, resolution=1920x1080
+2025-03-05 15:14:40,609 - ShmVideoReceiver - DEBUG - GStreamer pipeline: shmsrc socket-path=/tmp/video-stream ! video/x-raw,format=BGR,width=1920,height=1080,framerate=30/1 ! videoconvert ! appsink name=sink emit-signals=True sync=false
+2025-03-05 15:14:40,614 - ShmVideoReceiver - INFO - ShmVideoReceiver initialized successfully
+2025-03-05 15:14:40,614 - ShmVideoReceiver - INFO - Starting ShmVideoReceiver
+2025-03-05 15:14:40,614 - ShmVideoReceiver - ERROR - Failed to start pipeline
+2025-03-05 15:14:40,614 - ShmVideoReceiver - ERROR - Exception in main loop: Failed to start pipeline
+2025-03-05 15:14:40,614 - ShmVideoReceiver - ERROR - Traceback (most recent call last):
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/shm-receiver-debug.py", line 307, in <module>
+    receiver.start()
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/shm-receiver-debug.py", line 215, in start
+    raise RuntimeError("Failed to start pipeline")
+RuntimeError: Failed to start pipeline
+
+2025-03-05 15:14:40,614 - ShmVideoReceiver - INFO - Stopping ShmVideoReceiver
+2025-03-05 15:14:40,615 - ShmVideoReceiver - DEBUG - Pipeline set to NULL state
+2025-03-05 15:14:40,615 - ShmVideoReceiver - INFO - Stats: Uptime=0.0s, Frames=0, FPS=0.00, Drops=0 (0.0%)
+2025-03-05 15:14:40,615 - ShmVideoReceiver - INFO - ShmVideoReceiver stopped
+2025-03-05 15:14:40,615 - ShmVideoReceiver - INFO - Application shutdown complete
+2025-03-05 16:51:44,375 - ShmVideoReceiver - INFO - Starting SHM receiver on /tmp/video-stream, 1920x1080, format=BGR
+2025-03-05 16:51:44,375 - ShmVideoReceiver - INFO - Initializing ShmVideoReceiver: path=/tmp/video-stream, resolution=1920x1080
+2025-03-05 16:51:44,375 - ShmVideoReceiver - DEBUG - GStreamer pipeline: shmsrc socket-path=/tmp/video-stream ! video/x-raw,format=BGR,width=1920,height=1080,framerate=30/1 ! videoconvert ! appsink name=sink emit-signals=True sync=false
+2025-03-05 16:51:44,379 - ShmVideoReceiver - INFO - ShmVideoReceiver initialized successfully
+2025-03-05 16:51:44,379 - ShmVideoReceiver - INFO - Starting ShmVideoReceiver
+2025-03-05 16:51:44,379 - ShmVideoReceiver - INFO - Pipeline state change result: <enum GST_STATE_CHANGE_ASYNC of type Gst.StateChangeReturn>
+2025-03-05 16:51:44,380 - ShmVideoReceiver - DEBUG - GLib MainLoop starting
+2025-03-05 16:51:44,380 - ShmVideoReceiver - INFO - Stats: Uptime=0.0s, Frames=0, FPS=0.00, Drops=0 (0.0%)
+2025-03-05 16:51:44,416 - ShmVideoReceiver - ERROR - Error processing frame: buffer is too small for requested array
+2025-03-05 16:51:44,442 - ShmVideoReceiver - DEBUG - Pipeline state changed from NULL to READY
+2025-03-05 16:51:44,490 - ShmVideoReceiver - DEBUG - Pipeline state changed from READY to PAUSED
+2025-03-05 16:51:44,543 - ShmVideoReceiver - DEBUG - Pipeline state changed from PAUSED to PLAYING
+2025-03-05 16:51:49,403 - ShmVideoReceiver - INFO - Stats: Uptime=5.0s, Frames=0, FPS=0.00, Drops=100 (100.0%)
+2025-03-05 16:51:49,460 - ShmVideoReceiver - ERROR - Error processing frame: buffer is too small for requested array
+2025-03-05 16:51:54,428 - ShmVideoReceiver - INFO - Stats: Uptime=10.0s, Frames=0, FPS=0.00, Drops=201 (100.0%)
+2025-03-05 16:51:54,472 - ShmVideoReceiver - ERROR - Error processing frame: buffer is too small for requested array
+2025-03-05 16:51:59,069 - ShmVideoReceiver - INFO - Keyboard interrupt received
+2025-03-05 16:51:59,069 - ShmVideoReceiver - INFO - Stopping ShmVideoReceiver
+2025-03-05 16:51:59,070 - ShmVideoReceiver - DEBUG - MainLoop quit
+2025-03-05 16:51:59,070 - ShmVideoReceiver - DEBUG - GLib MainLoop exited
+2025-03-05 16:51:59,070 - ShmVideoReceiver - DEBUG - MainLoop thread joined
+2025-03-05 16:51:59,446 - ShmVideoReceiver - DEBUG - Stats thread joined
+2025-03-05 16:51:59,446 - ShmVideoReceiver - DEBUG - Pipeline set to NULL state
+2025-03-05 16:51:59,446 - ShmVideoReceiver - INFO - Stats: Uptime=15.1s, Frames=0, FPS=0.00, Drops=301 (100.0%)
+2025-03-05 16:51:59,446 - ShmVideoReceiver - INFO - ShmVideoReceiver stopped
+2025-03-05 16:51:59,446 - ShmVideoReceiver - INFO - Application shutdown complete
+2025-03-05 16:53:08,618 - ShmVideoReceiver - INFO - Starting SHM receiver on /tmp/video-stream, 1920x1080, format=BGR
+2025-03-05 16:53:08,618 - ShmVideoReceiver - INFO - Initializing ShmVideoReceiver: path=/tmp/video-stream, resolution=1920x1080
+2025-03-05 16:53:08,618 - ShmVideoReceiver - DEBUG - GStreamer pipeline: shmsrc socket-path=/tmp/video-stream ! video/x-raw,format=BGR,width=1920,height=1080,framerate=30/1 ! videoconvert ! appsink name=sink emit-signals=True sync=false
+2025-03-05 16:53:08,624 - ShmVideoReceiver - INFO - ShmVideoReceiver initialized successfully
+2025-03-05 16:53:08,624 - ShmVideoReceiver - INFO - Starting ShmVideoReceiver
+2025-03-05 16:53:08,625 - ShmVideoReceiver - INFO - Pipeline state change result: <enum GST_STATE_CHANGE_ASYNC of type Gst.StateChangeReturn>
+2025-03-05 16:53:08,625 - ShmVideoReceiver - DEBUG - GLib MainLoop starting
+2025-03-05 16:53:08,626 - ShmVideoReceiver - INFO - Stats: Uptime=0.0s, Frames=0, FPS=0.00, Drops=0 (0.0%)
+2025-03-05 16:53:08,667 - ShmVideoReceiver - ERROR - Error processing frame: buffer is too small for requested array
+2025-03-05 16:53:08,672 - ShmVideoReceiver - DEBUG - Pipeline state changed from NULL to READY
+2025-03-05 16:53:08,745 - ShmVideoReceiver - DEBUG - Pipeline state changed from READY to PAUSED
+2025-03-05 16:53:08,787 - ShmVideoReceiver - DEBUG - Pipeline state changed from PAUSED to PLAYING
+2025-03-05 16:53:13,667 - ShmVideoReceiver - INFO - Stats: Uptime=5.0s, Frames=0, FPS=0.00, Drops=100 (100.0%)
+2025-03-05 16:53:13,673 - ShmVideoReceiver - ERROR - Error processing frame: buffer is too small for requested array
+2025-03-05 16:53:18,703 - ShmVideoReceiver - INFO - Stats: Uptime=10.1s, Frames=0, FPS=0.00, Drops=201 (100.0%)
+2025-03-05 16:53:18,732 - ShmVideoReceiver - ERROR - Error processing frame: buffer is too small for requested array
+2025-03-05 16:53:18,940 - ShmVideoReceiver - INFO - Keyboard interrupt received
+2025-03-05 16:53:18,941 - ShmVideoReceiver - INFO - Stopping ShmVideoReceiver
+2025-03-05 16:53:18,941 - ShmVideoReceiver - DEBUG - MainLoop quit
+2025-03-05 16:53:18,942 - ShmVideoReceiver - DEBUG - GLib MainLoop exited
+2025-03-05 16:53:18,942 - ShmVideoReceiver - DEBUG - MainLoop thread joined
+2025-03-05 16:53:19,942 - ShmVideoReceiver - DEBUG - Stats thread joined
+2025-03-05 16:53:19,943 - ShmVideoReceiver - DEBUG - Pipeline set to NULL state
+2025-03-05 16:53:19,943 - ShmVideoReceiver - INFO - Stats: Uptime=11.3s, Frames=0, FPS=0.00, Drops=226 (100.0%)
+2025-03-05 16:53:19,943 - ShmVideoReceiver - INFO - ShmVideoReceiver stopped
+2025-03-05 16:53:19,943 - ShmVideoReceiver - INFO - Application shutdown complete
+2025-03-05 17:02:39,684 - ShmVideoReceiver - INFO - Starting SHM receiver on /tmp/video-stream, 1920x1080, format=BGR
+2025-03-05 17:02:39,684 - ShmVideoReceiver - INFO - Initializing ShmVideoReceiver: path=/tmp/video-stream, resolution=1920x1080
+2025-03-05 17:02:39,684 - ShmVideoReceiver - DEBUG - GStreamer pipeline: shmsrc socket-path=/tmp/video-stream ! video/x-raw,format=BGR,width=1920,height=1080,framerate=30/1 ! videoconvert ! appsink name=sink emit-signals=True sync=false
+2025-03-05 17:02:39,689 - ShmVideoReceiver - INFO - ShmVideoReceiver initialized successfully
+2025-03-05 17:02:39,689 - ShmVideoReceiver - INFO - Starting ShmVideoReceiver
+2025-03-05 17:02:39,689 - ShmVideoReceiver - INFO - Pipeline state change result: <enum GST_STATE_CHANGE_ASYNC of type Gst.StateChangeReturn>
+2025-03-05 17:02:39,689 - ShmVideoReceiver - DEBUG - GLib MainLoop starting
+2025-03-05 17:02:39,690 - ShmVideoReceiver - INFO - Stats: Uptime=0.0s, Frames=0, FPS=0.00, Drops=0 (0.0%)
+2025-03-05 17:02:39,722 - ShmVideoReceiver - DEBUG - Pipeline state changed from NULL to READY
+2025-03-05 17:02:39,761 - ShmVideoReceiver - ERROR - Error processing frame: buffer is too small for requested array
+2025-03-05 17:02:39,777 - ShmVideoReceiver - DEBUG - Pipeline state changed from READY to PAUSED
+2025-03-05 17:02:39,841 - ShmVideoReceiver - DEBUG - Pipeline state changed from PAUSED to PLAYING
+2025-03-05 17:02:44,716 - ShmVideoReceiver - INFO - Stats: Uptime=5.0s, Frames=0, FPS=0.00, Drops=83 (100.0%)
+2025-03-05 17:02:44,804 - ShmVideoReceiver - ERROR - Error processing frame: buffer is too small for requested array
+2025-03-05 17:02:49,742 - ShmVideoReceiver - INFO - Stats: Uptime=10.1s, Frames=0, FPS=0.00, Drops=167 (100.0%)
+2025-03-05 17:02:49,846 - ShmVideoReceiver - ERROR - Error processing frame: buffer is too small for requested array
+2025-03-05 17:02:54,654 - ShmVideoReceiver - ERROR - GStreamer error: Failed to read from shmsrc
+2025-03-05 17:02:54,664 - ShmVideoReceiver - DEBUG - GStreamer error debug info: ../sys/shm/gstshmsrc.c(356): gst_shm_src_create (): /GstPipeline:pipeline0/GstShmSrc:shmsrc0:
+Control socket has closed
+2025-03-05 17:02:54,685 - ShmVideoReceiver - ERROR - GStreamer error: Internal data stream error.
+2025-03-05 17:02:54,695 - ShmVideoReceiver - DEBUG - GStreamer error debug info: ../libs/gst/base/gstbasesrc.c(3127): gst_base_src_loop (): /GstPipeline:pipeline0/GstShmSrc:shmsrc0:
+streaming stopped, reason error (-5)
+2025-03-05 17:02:54,768 - ShmVideoReceiver - INFO - Stats: Uptime=15.1s, Frames=0, FPS=0.00, Drops=248 (100.0%)
+2025-03-05 17:02:57,631 - ShmVideoReceiver - INFO - Keyboard interrupt received
+2025-03-05 17:02:57,631 - ShmVideoReceiver - INFO - Stopping ShmVideoReceiver
+2025-03-05 17:02:57,631 - ShmVideoReceiver - DEBUG - MainLoop quit
+2025-03-05 17:02:57,631 - ShmVideoReceiver - DEBUG - GLib MainLoop exited
+2025-03-05 17:02:57,631 - ShmVideoReceiver - DEBUG - MainLoop thread joined
+2025-03-05 17:05:43,328 - ShmVideoReceiver - INFO - Starting SHM receiver on /tmp/video-stream, 1920x1080, format=I420
+2025-03-05 17:05:43,328 - ShmVideoReceiver - INFO - Initializing ShmVideoReceiver: path=/tmp/video-stream, resolution=1920x1080, format=I420
+2025-03-05 17:05:43,328 - ShmVideoReceiver - DEBUG - GStreamer pipeline: shmsrc socket-path=/tmp/video-stream ! video/x-raw,format=I420,width=1920,height=1080,framerate=30/1 ! videoconvert ! video/x-raw,format=BGR ! appsink name=sink emit-signals=True sync=false
+2025-03-05 17:05:43,333 - ShmVideoReceiver - INFO - ShmVideoReceiver initialized successfully
+2025-03-05 17:05:43,333 - ShmVideoReceiver - INFO - Starting ShmVideoReceiver
+2025-03-05 17:05:43,333 - ShmVideoReceiver - INFO - Pipeline state change result: <enum GST_STATE_CHANGE_ASYNC of type Gst.StateChangeReturn>
+2025-03-05 17:05:43,333 - ShmVideoReceiver - DEBUG - GLib MainLoop starting
+2025-03-05 17:05:43,334 - ShmVideoReceiver - INFO - Stats: Uptime=0.0s, Frames=0, FPS=0.00, Drops=0 (0.0%)
+2025-03-05 17:05:43,376 - ShmVideoReceiver - DEBUG - Pipeline state changed from NULL to READY
+2025-03-05 17:05:43,393 - ShmVideoReceiver - DEBUG - Pipeline state changed from READY to PAUSED
+2025-03-05 17:05:43,393 - ShmVideoReceiver - DEBUG - Pipeline state changed from PAUSED to PLAYING
+2025-03-05 17:05:48,362 - ShmVideoReceiver - INFO - Stats: Uptime=5.0s, Frames=84, FPS=17.01, Drops=0 (0.0%)
+2025-03-05 17:05:49,305 - ShmVideoReceiver - DEBUG - Frame 100: shape=(1080, 1920, 3), min=0, max=255, fps=16.75
+2025-03-05 17:05:49,306 - ShmVideoReceiver - DEBUG - Memory usage: 173.27 MB
+2025-03-05 17:05:53,367 - ShmVideoReceiver - INFO - Stats: Uptime=10.0s, Frames=167, FPS=16.85, Drops=0 (0.0%)
+2025-03-05 17:05:55,315 - ShmVideoReceiver - DEBUG - Frame 200: shape=(1080, 1920, 3), min=0, max=255, fps=16.93
+2025-03-05 17:05:55,315 - ShmVideoReceiver - DEBUG - Memory usage: 173.27 MB
+2025-03-05 17:05:58,370 - ShmVideoReceiver - INFO - Stats: Uptime=15.0s, Frames=250, FPS=16.78, Drops=0 (0.0%)
+2025-03-05 17:06:01,329 - ShmVideoReceiver - DEBUG - Frame 300: shape=(1080, 1920, 3), min=0, max=255, fps=16.45
+2025-03-05 17:06:01,329 - ShmVideoReceiver - DEBUG - Memory usage: 173.27 MB
+2025-03-05 17:06:03,374 - ShmVideoReceiver - INFO - Stats: Uptime=20.0s, Frames=334, FPS=16.95, Drops=0 (0.0%)
+2025-03-05 17:06:07,334 - ShmVideoReceiver - DEBUG - Frame 400: shape=(1080, 1920, 3), min=0, max=255, fps=16.94
+2025-03-05 17:06:07,334 - ShmVideoReceiver - DEBUG - Memory usage: 173.27 MB
+2025-03-05 17:06:08,379 - ShmVideoReceiver - INFO - Stats: Uptime=25.0s, Frames=417, FPS=16.50, Drops=0 (0.0%)
+2025-03-05 17:06:13,349 - ShmVideoReceiver - DEBUG - Frame 500: shape=(1080, 1920, 3), min=0, max=255, fps=16.62
+2025-03-05 17:06:13,349 - ShmVideoReceiver - DEBUG - Memory usage: 173.27 MB
+2025-03-05 17:06:13,382 - ShmVideoReceiver - INFO - Stats: Uptime=30.0s, Frames=500, FPS=16.62, Drops=0 (0.0%)
+2025-03-05 17:06:18,386 - ShmVideoReceiver - INFO - Stats: Uptime=35.1s, Frames=583, FPS=16.62, Drops=0 (0.0%)
+2025-03-05 17:06:19,355 - ShmVideoReceiver - DEBUG - Frame 600: shape=(1080, 1920, 3), min=0, max=255, fps=16.66
+2025-03-05 17:06:19,355 - ShmVideoReceiver - DEBUG - Memory usage: 173.27 MB
+2025-03-05 17:06:23,390 - ShmVideoReceiver - INFO - Stats: Uptime=40.1s, Frames=667, FPS=16.90, Drops=0 (0.0%)
+2025-03-05 17:06:25,363 - ShmVideoReceiver - DEBUG - Frame 700: shape=(1080, 1920, 3), min=0, max=255, fps=16.60
+2025-03-05 17:06:25,363 - ShmVideoReceiver - DEBUG - Memory usage: 173.27 MB
+2025-03-05 17:06:25,493 - ShmVideoReceiver - ERROR - GStreamer error: Failed to read from shmsrc
+2025-03-05 17:06:25,493 - ShmVideoReceiver - DEBUG - GStreamer error debug info: ../sys/shm/gstshmsrc.c(356): gst_shm_src_create (): /GstPipeline:pipeline0/GstShmSrc:shmsrc0:
+Control socket has closed
+2025-03-05 17:06:25,493 - ShmVideoReceiver - ERROR - GStreamer error: Internal data stream error.
+2025-03-05 17:06:25,493 - ShmVideoReceiver - DEBUG - GStreamer error debug info: ../libs/gst/base/gstbasesrc.c(3127): gst_base_src_loop (): /GstPipeline:pipeline0/GstShmSrc:shmsrc0:
+streaming stopped, reason error (-5)
+2025-03-05 17:06:28,394 - ShmVideoReceiver - INFO - Stats: Uptime=45.1s, Frames=702, FPS=16.60, Drops=0 (0.0%)
+2025-03-05 17:06:33,398 - ShmVideoReceiver - INFO - Stats: Uptime=50.1s, Frames=702, FPS=16.60, Drops=0 (0.0%)
+2025-03-05 17:06:38,402 - ShmVideoReceiver - INFO - Stats: Uptime=55.1s, Frames=702, FPS=16.60, Drops=0 (0.0%)
+2025-03-05 17:10:39,939 - ShmVideoReceiver - INFO - Starting SHM receiver on /tmp/video-stream, 1920x1080, format=I420
+2025-03-05 17:10:39,939 - ShmVideoReceiver - INFO - Initializing ShmVideoReceiver: path=/tmp/video-stream, resolution=1920x1080, format=I420
+2025-03-05 17:10:39,939 - ShmVideoReceiver - DEBUG - GStreamer pipeline: shmsrc socket-path=/tmp/video-stream ! video/x-raw,format=I420,width=1920,height=1080,framerate=30/1 ! videoconvert ! video/x-raw,format=BGRx ! appsink name=sink emit-signals=True sync=false max-buffers=2 drop=true
+2025-03-05 17:10:39,943 - ShmVideoReceiver - ERROR - Initialization error: gst_parse_error: no element "shmsrc" (1)
+2025-03-05 17:10:39,944 - ShmVideoReceiver - ERROR - Traceback (most recent call last):
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/shm-receiver-debug.py", line 79, in __init__
+    self.pipeline = Gst.parse_launch(pipeline_str)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+gi.repository.GLib.GError: gst_parse_error: no element "shmsrc" (1)
+
+2025-03-05 17:10:39,944 - ShmVideoReceiver - ERROR - Exception in main loop: gst_parse_error: no element "shmsrc" (1)
+2025-03-05 17:10:39,944 - ShmVideoReceiver - ERROR - Traceback (most recent call last):
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/shm-receiver-debug.py", line 363, in <module>
+    receiver = ShmVideoReceiver(
+               ^^^^^^^^^^^^^^^^^
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/shm-receiver-debug.py", line 79, in __init__
+    self.pipeline = Gst.parse_launch(pipeline_str)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+gi.repository.GLib.GError: gst_parse_error: no element "shmsrc" (1)
+
+2025-03-05 17:10:43,790 - ShmVideoReceiver - INFO - Starting SHM receiver on /tmp/video-stream, 1920x1080, format=I420
+2025-03-05 17:10:43,790 - ShmVideoReceiver - INFO - Initializing ShmVideoReceiver: path=/tmp/video-stream, resolution=1920x1080, format=I420
+2025-03-05 17:10:43,790 - ShmVideoReceiver - DEBUG - GStreamer pipeline: shmsrc socket-path=/tmp/video-stream ! video/x-raw,format=I420,width=1920,height=1080,framerate=30/1 ! videoconvert ! video/x-raw,format=BGRx ! appsink name=sink emit-signals=True sync=false max-buffers=2 drop=true
+2025-03-05 17:10:43,797 - ShmVideoReceiver - ERROR - Initialization error: gst_parse_error: no element "shmsrc" (1)
+2025-03-05 17:10:43,798 - ShmVideoReceiver - ERROR - Traceback (most recent call last):
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/shm-receiver-debug.py", line 79, in __init__
+    self.pipeline = Gst.parse_launch(pipeline_str)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+gi.repository.GLib.GError: gst_parse_error: no element "shmsrc" (1)
+
+2025-03-05 17:10:43,798 - ShmVideoReceiver - ERROR - Exception in main loop: gst_parse_error: no element "shmsrc" (1)
+2025-03-05 17:10:43,799 - ShmVideoReceiver - ERROR - Traceback (most recent call last):
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/shm-receiver-debug.py", line 363, in <module>
+    receiver = ShmVideoReceiver(
+               ^^^^^^^^^^^^^^^^^
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/shm-receiver-debug.py", line 79, in __init__
+    self.pipeline = Gst.parse_launch(pipeline_str)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+gi.repository.GLib.GError: gst_parse_error: no element "shmsrc" (1)
+
+2025-03-05 17:11:15,965 - ShmVideoReceiver - INFO - Starting SHM receiver on /tmp/video-stream, 1920x1080, format=I420
+2025-03-05 17:11:15,965 - ShmVideoReceiver - INFO - Initializing ShmVideoReceiver: path=/tmp/video-stream, resolution=1920x1080, format=I420
+2025-03-05 17:11:15,965 - ShmVideoReceiver - DEBUG - GStreamer pipeline: shmsrc socket-path=/tmp/video-stream ! video/x-raw,format=I420,width=1920,height=1080,framerate=30/1 ! videoconvert ! video/x-raw,format=BGRx ! appsink name=sink emit-signals=True sync=false max-buffers=2 drop=true
+2025-03-05 17:11:15,970 - ShmVideoReceiver - INFO - ShmVideoReceiver initialized successfully
+2025-03-05 17:11:15,970 - ShmVideoReceiver - INFO - Starting ShmVideoReceiver
+2025-03-05 17:11:15,970 - ShmVideoReceiver - INFO - Pipeline state change result: <enum GST_STATE_CHANGE_ASYNC of type Gst.StateChangeReturn>
+2025-03-05 17:11:15,971 - ShmVideoReceiver - DEBUG - GLib MainLoop starting
+2025-03-05 17:11:15,971 - ShmVideoReceiver - INFO - Stats: Uptime=0.0s, Frames=0, FPS=0.00, Drops=0 (0.0%)
+2025-03-05 17:11:15,973 - ShmVideoReceiver - DEBUG - Pipeline state changed from NULL to READY
+2025-03-05 17:11:16,017 - ShmVideoReceiver - DEBUG - Pipeline state changed from READY to PAUSED
+2025-03-05 17:11:16,023 - ShmVideoReceiver - DEBUG - Pipeline state changed from PAUSED to PLAYING
+2025-03-05 17:12:12,885 - ShmVideoReceiver - INFO - Starting SHM receiver on /tmp/video-stream, 1920x1080, format=I420
+2025-03-05 17:12:12,885 - ShmVideoReceiver - INFO - Initializing ShmVideoReceiver: path=/tmp/video-stream, resolution=1920x1080, format=I420
+2025-03-05 17:12:12,885 - ShmVideoReceiver - DEBUG - GStreamer pipeline: shmsrc socket-path=/tmp/video-stream ! video/x-raw,format=I420,width=1920,height=1080,framerate=30/1 ! videoconvert ! video/x-raw,format=BGRx ! appsink name=sink emit-signals=True sync=false max-buffers=2 drop=true
+2025-03-05 17:12:12,890 - ShmVideoReceiver - INFO - ShmVideoReceiver initialized successfully
+2025-03-05 17:12:12,890 - ShmVideoReceiver - INFO - Starting ShmVideoReceiver
+2025-03-05 17:12:12,891 - ShmVideoReceiver - INFO - Pipeline state change result: <enum GST_STATE_CHANGE_ASYNC of type Gst.StateChangeReturn>
+2025-03-05 17:12:12,891 - ShmVideoReceiver - DEBUG - GLib MainLoop starting
+2025-03-05 17:12:12,891 - ShmVideoReceiver - INFO - Stats: Uptime=0.0s, Frames=0, FPS=0.00, Drops=0 (0.0%)
+2025-03-05 17:12:12,892 - ShmVideoReceiver - DEBUG - Pipeline state changed from NULL to READY
+2025-03-05 17:12:12,934 - ShmVideoReceiver - DEBUG - Pipeline state changed from READY to PAUSED
+2025-03-05 17:12:12,940 - ShmVideoReceiver - DEBUG - Pipeline state changed from PAUSED to PLAYING
+2025-03-05 17:12:17,895 - ShmVideoReceiver - INFO - Stats: Uptime=5.0s, Frames=83, FPS=16.57, Drops=0 (0.0%)
+2025-03-05 17:12:18,921 - ShmVideoReceiver - DEBUG - Frame 100: shape=(1080, 1920, 3), min=0, max=255, fps=16.53
+2025-03-05 17:12:18,922 - ShmVideoReceiver - DEBUG - Memory usage: 170.71 MB
+2025-03-05 17:12:22,898 - ShmVideoReceiver - INFO - Stats: Uptime=10.0s, Frames=166, FPS=16.92, Drops=0 (0.0%)
+2025-03-05 17:12:24,922 - ShmVideoReceiver - DEBUG - Frame 200: shape=(1080, 1920, 3), min=0, max=255, fps=16.67
+2025-03-05 17:12:24,922 - ShmVideoReceiver - DEBUG - Memory usage: 170.71 MB
+2025-03-05 17:12:27,902 - ShmVideoReceiver - INFO - Stats: Uptime=15.0s, Frames=249, FPS=16.44, Drops=0 (0.0%)
+2025-03-05 17:12:30,937 - ShmVideoReceiver - DEBUG - Frame 300: shape=(1080, 1920, 3), min=0, max=255, fps=16.48
+2025-03-05 17:12:30,937 - ShmVideoReceiver - DEBUG - Memory usage: 170.93 MB
+2025-03-05 17:12:32,906 - ShmVideoReceiver - INFO - Stats: Uptime=20.0s, Frames=333, FPS=16.79, Drops=0 (0.0%)
+2025-03-05 17:12:36,942 - ShmVideoReceiver - DEBUG - Frame 400: shape=(1080, 1920, 3), min=0, max=255, fps=16.84
+2025-03-05 17:12:36,943 - ShmVideoReceiver - DEBUG - Memory usage: 170.93 MB
+2025-03-05 17:12:37,910 - ShmVideoReceiver - INFO - Stats: Uptime=25.0s, Frames=416, FPS=16.95, Drops=0 (0.0%)
+2025-03-05 17:12:37,961 - ShmVideoReceiver - INFO - Caught SIGINT, cleaning up...
+2025-03-05 17:12:37,961 - ShmVideoReceiver - INFO - Stopping ShmVideoReceiver
+2025-03-05 17:12:37,961 - ShmVideoReceiver - DEBUG - MainLoop quit
+2025-03-05 17:12:37,961 - ShmVideoReceiver - DEBUG - GLib MainLoop exited
+2025-03-05 17:12:37,961 - ShmVideoReceiver - DEBUG - Pipeline set to NULL state
+2025-03-05 17:12:38,462 - ShmVideoReceiver - DEBUG - Stats thread join timed out
+2025-03-05 17:12:38,462 - ShmVideoReceiver - INFO - Stats: Uptime=25.6s, Frames=417, FPS=16.80, Drops=0 (0.0%)
+2025-03-05 17:12:38,462 - ShmVideoReceiver - INFO - ShmVideoReceiver stopped
+2025-03-05 17:12:38,462 - ShmVideoReceiver - INFO - Forced exit

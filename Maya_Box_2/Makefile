@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra -g
-LDFLAGS = $(shell pkg-config --libs gtk+-3.0 gstreamer-1.0 gstreamer-video-1.0 webkit2gtk-4.0)
-CPPFLAGS = $(shell pkg-config --cflags gtk+-3.0 gstreamer-1.0 gstreamer-video-1.0 webkit2gtk-4.0)
+LDFLAGS = $(shell pkg-config --libs gtk+-3.0 gstreamer-1.0 gstreamer-video-1.0 webkit2gtk-4.0 gstreamer-rtsp-server-1.0)
+CPPFLAGS = $(shell pkg-config --cflags gtk+-3.0 gstreamer-1.0 gstreamer-video-1.0 webkit2gtk-4.0 gstreamer-rtsp-server-1.0)
 
 SRC_DIR = src/cpp
 BUILD_DIR = build
@@ -39,6 +39,7 @@ install-deps:
 		libgtk-3-dev \
 		libgstreamer1.0-dev \
 		libgstreamer-plugins-base1.0-dev \
+		libgstrtspserver-1.0-dev \
 		gstreamer1.0-plugins-good \
 		gstreamer1.0-plugins-bad \
 		gstreamer1.0-plugins-ugly \

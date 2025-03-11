@@ -3,6 +3,7 @@
 #include <webkit2/webkit2.h>
 #include <gst/gst.h>
 #include <gst/video/videooverlay.h>
+#include <gst/rtsp-server/rtsp-server.h>  // Add this at the top
 #include <iostream>
 #include <string>
 #include <filesystem>
@@ -10,17 +11,28 @@
 
 // Global variables
 GstElement *pipeline = nullptr;
+GstElement *tee = nullptr;
+GstElement *videoSink = nullptr;
+GstElement *shmSink = nullptr;
 GtkWidget *videoWindow = nullptr;
 GtkWidget *overlayWindow = nullptr;
 GtkWidget *webView = nullptr;
+GstRTSPServer *rtspServer = nullptr;
+
+// Configuration - adjust as needed
+const bool ENABLE_SHM = true;
+const bool ENABLE_RTSP = true;
+const std::string SHM_SOCKET_PATH = "/tmp/video-stream";
+const std::string RTSP_PORT = "8554";
+const std::string RTSP_MOUNT_POINT = "/stream";
 
 // Forward declarations
 static gboolean on_key_press(GtkWidget *widget, GdkEventKey *event, gpointer data);
 static void on_message(GstBus *bus, GstMessage *message, gpointer data);
 static void cleanup_and_quit();
 static void on_load_changed(WebKitWebView *web_view, WebKitLoadEvent load_event, gpointer user_data);
-// Updated console message callback signature to match your WebKit version
 static gboolean on_console_message(WebKitWebView *web_view, gchar *message, gpointer user_data);
+static void setup_rtsp_server();
 
 // Debug helper function
 void debug_print(const std::string& prefix, const std::string& message) {
@@ -67,7 +79,6 @@ int main(int argc, char *argv[]) {
     
     // Connect to load-changed and console-message signals
     g_signal_connect(G_OBJECT(webView), "load-changed", G_CALLBACK(on_load_changed), NULL);
-    // Using the correct signal name for your WebKit version
     g_signal_connect(webView, "console-message", G_CALLBACK(on_console_message), NULL);
     
     // Add the WebView to the overlay window
@@ -83,7 +94,6 @@ int main(int argc, char *argv[]) {
     webkit_settings_set_enable_javascript(settings, TRUE);
     
     // These might not be available in older WebKit versions - try/catch them
-    // Using individual try blocks to avoid skipping all if one fails
     try {
         webkit_settings_set_javascript_can_access_clipboard(settings, TRUE);
     } catch (...) {
@@ -124,60 +134,25 @@ int main(int argc, char *argv[]) {
     guintptr window_handle = GDK_WINDOW_XID(gtk_widget_get_window(videoWindow));
     debug_print("Window", "Video window XID: " + std::to_string(window_handle));
     
-    // Create the pipeline using MJPG format with known supported resolution
-    GError *error = nullptr;
-    
-    // Use MJPG format which is supported by your camera
-    const gchar *pipelineStr = 
+    // Create the pipeline string
+    std::string pipeline_str = 
         "v4l2src device=/dev/video0 ! "
         "image/jpeg,width=1920,height=1080,framerate=30/1 ! "
-        "jpegdec ! videoconvert ! xvimagesink name=sink sync=false";
+        "jpegdec ! videoconvert ! tee name=t "
+        "t. ! queue max-size-buffers=2 leaky=downstream ! xvimagesink name=sink sync=false";
     
-    debug_print("Pipeline", "Creating pipeline with MJPG format at 1920x1080");
-    pipeline = gst_parse_launch(pipelineStr, &error);
+    // Create the pipeline with gst_parse_launch
+    GError *error = nullptr;
+    pipeline = gst_parse_launch(pipeline_str.c_str(), &error);
     
     if (error) {
-        debug_print("Pipeline", "Failed with 1080p: " + std::string(error->message));
+        debug_print("Pipeline", "Failed to create pipeline: " + std::string(error->message));
         g_clear_error(&error);
-        
-        // Try with 720p
-        pipelineStr = 
-            "v4l2src device=/dev/video0 ! "
-            "image/jpeg,width=1280,height=720,framerate=30/1 ! "
-            "jpegdec ! videoconvert ! xvimagesink name=sink sync=false";
-        
-        debug_print("Pipeline", "Trying with 720p");
-        pipeline = gst_parse_launch(pipelineStr, &error);
-        
-        if (error) {
-            debug_print("Pipeline", "Failed with 720p: " + std::string(error->message));
-            g_clear_error(&error);
-            
-            // Fallback to test source as last resort
-            pipelineStr = 
-                "videotestsrc pattern=18 ! videoconvert ! "
-                "xvimagesink name=sink sync=false";
-            
-            debug_print("Pipeline", "Falling back to test source");
-            pipeline = gst_parse_launch(pipelineStr, &error);
-            
-            if (error) {
-                debug_print("Pipeline", "All pipeline attempts failed");
-                g_clear_error(&error);
-                return 1;
-            }
-        }
+        cleanup_and_quit();
+        return 1;
     }
     
-    debug_print("Pipeline", "Pipeline created successfully");
-    
-    // Set up the bus watch
-    GstBus *bus = gst_pipeline_get_bus(GST_PIPELINE(pipeline));
-    gst_bus_add_signal_watch(bus);
-    g_signal_connect(bus, "message", G_CALLBACK(on_message), NULL);
-    gst_object_unref(bus);
-    
-    // Get the sink and set window handle
+    // Find the video sink and set window handle
     GstElement *sink = gst_bin_get_by_name(GST_BIN(pipeline), "sink");
     if (sink && GST_IS_VIDEO_OVERLAY(sink)) {
         gst_video_overlay_set_window_handle(GST_VIDEO_OVERLAY(sink), window_handle);
@@ -185,12 +160,89 @@ int main(int argc, char *argv[]) {
         gst_object_unref(sink);
     }
     
+    // Get the tee element for later use
+    tee = gst_bin_get_by_name(GST_BIN(pipeline), "t");
+    if (!tee) {
+        debug_print("Pipeline", "Failed to get tee element");
+        cleanup_and_quit();
+        return 1;
+    }
+    
+    // Clean up old sockets
+    std::string cleanup_cmd = "rm -f " + SHM_SOCKET_PATH + "*";
+    system(cleanup_cmd.c_str());
+    debug_print("Pipeline", "Cleaned up old shared memory sockets");
+    
+    // Add shared memory branch if enabled
+    if (ENABLE_SHM) {
+        // Create elements
+        GstElement *shmqueue = gst_element_factory_make("queue", "shm-queue");
+        GstElement *shmconvert = gst_element_factory_make("videoconvert", "shm-convert");
+        GstElement *shmcapsfilter = gst_element_factory_make("capsfilter", "shm-caps");
+        shmSink = gst_element_factory_make("shmsink", "shm-sink");
+        
+        if (!shmqueue || !shmconvert || !shmcapsfilter || !shmSink) {
+            debug_print("Pipeline", "Failed to create shared memory elements");
+        } else {
+            // Configure capsfilter
+            GstCaps *shmcaps = gst_caps_new_simple("video/x-raw",
+                "format", G_TYPE_STRING, "I420",
+                "width", G_TYPE_INT, 1920,
+                "height", G_TYPE_INT, 1080,
+                "framerate", GST_TYPE_FRACTION, 30, 1,
+                NULL);
+            g_object_set(G_OBJECT(shmcapsfilter), "caps", shmcaps, NULL);
+            gst_caps_unref(shmcaps);
+            
+            // Configure shmsink
+            g_object_set(G_OBJECT(shmSink),
+                        "socket-path", SHM_SOCKET_PATH.c_str(),
+                        "perms", 0664,  // Read/write for owner/group, read-only for others
+                        "sync", FALSE,
+                        "wait-for-connection", FALSE,  // Don't block if no client
+                        "shm-size", 10000000,  // 10MB buffer
+                        NULL);
+            
+            // Add elements to pipeline
+            gst_bin_add_many(GST_BIN(pipeline), shmqueue, shmconvert, shmcapsfilter, shmSink, NULL);
+            
+            // Link elements together
+            if (!gst_element_link_many(shmqueue, shmconvert, shmcapsfilter, shmSink, NULL)) {
+                debug_print("Pipeline", "Failed to link shared memory elements");
+                gst_bin_remove_many(GST_BIN(pipeline), shmqueue, shmconvert, shmcapsfilter, shmSink, NULL);
+            } else {
+                // Link tee to queue
+                GstPad *teepad = gst_element_request_pad_simple(tee, "src_%u");
+                GstPad *queuepad = gst_element_get_static_pad(shmqueue, "sink");
+                
+                if (gst_pad_link(teepad, queuepad) != GST_PAD_LINK_OK) {
+                    debug_print("Pipeline", "Failed to link tee to shared memory queue");
+                } else {
+                    debug_print("Pipeline", "Shared memory branch added successfully");
+                }
+                
+                gst_object_unref(queuepad);
+            }
+        }
+    }
+    
+    // Set up the bus watch
+    GstBus *bus = gst_pipeline_get_bus(GST_PIPELINE(pipeline));
+    gst_bus_add_signal_watch(bus);
+    g_signal_connect(bus, "message", G_CALLBACK(on_message), NULL);
+    gst_object_unref(bus);
+    
     // Start the pipeline
     GstStateChangeReturn ret = gst_element_set_state(pipeline, GST_STATE_PLAYING);
     if (ret == GST_STATE_CHANGE_FAILURE) {
         debug_print("Pipeline", "Failed to start pipeline");
         cleanup_and_quit();
         return 1;
+    }
+    
+    // Setup RTSP server if enabled
+    if (ENABLE_RTSP) {
+        setup_rtsp_server();
     }
     
     // Short delay to ensure video is displayed
@@ -207,6 +259,49 @@ int main(int argc, char *argv[]) {
     gtk_main();
     
     return 0;
+}
+
+// Setup RTSP server independent of the main pipeline
+static void setup_rtsp_server() {
+    debug_print("RTSP", "Setting up RTSP server on port " + RTSP_PORT + " at " + RTSP_MOUNT_POINT);
+    
+    // Create GstRtspServer
+    rtspServer = gst_rtsp_server_new();
+    if (!rtspServer) {
+        debug_print("RTSP", "Failed to create RTSP server");
+        return;
+    }
+    
+    // Set the port
+    gst_rtsp_server_set_service(rtspServer, RTSP_PORT.c_str());
+    
+    // Get the mount points
+    GstRTSPMountPoints *mounts = gst_rtsp_server_get_mount_points(rtspServer);
+    
+    // Create factory and configure it
+    GstRTSPMediaFactory *factory = gst_rtsp_media_factory_new();
+    
+    // Set launch line for the factory
+    // This creates a completely separate pipeline specifically for RTSP streaming
+    gst_rtsp_media_factory_set_launch(factory, 
+        "( v4l2src device=/dev/video0 ! "
+        "image/jpeg,width=1920,height=1080,framerate=30/1 ! "
+        "jpegdec ! videoconvert ! x264enc tune=zerolatency speed-preset=ultrafast "
+        "bitrate=2000 key-int-max=30 ! h264parse ! rtph264pay name=pay0 pt=96 )");
+    
+    // Don't reuse the media - create fresh for each viewer
+    gst_rtsp_media_factory_set_shared(factory, TRUE);
+    
+    // Mount the factory
+    gst_rtsp_mount_points_add_factory(mounts, RTSP_MOUNT_POINT.c_str(), factory);
+    g_object_unref(mounts);
+    
+    // Start the RTSP server with default maincontext
+    gst_rtsp_server_attach(rtspServer, NULL);
+    
+    // Just log the URL
+    std::string ip = "YOUR_IP_ADDRESS";
+    debug_print("RTSP", "RTSP URL: rtsp://" + ip + ":" + RTSP_PORT + RTSP_MOUNT_POINT);
 }
 
 // Handle WebKit load events
@@ -227,7 +322,7 @@ static void on_load_changed(WebKitWebView *web_view, WebKitLoadEvent load_event,
     }
 }
 
-// Handle WebKit console messages - updated for your WebKit version
+// Handle WebKit console messages
 static gboolean on_console_message(WebKitWebView *web_view, gchar *message, gpointer user_data) {
     debug_print("WebKit Console", message ? message : "(null message)");
     return FALSE; // Return FALSE to allow default console handling
@@ -292,6 +387,12 @@ static void cleanup_and_quit() {
         debug_print("Cleanup", "Unreferencing pipeline");
         gst_object_unref(pipeline);
         pipeline = nullptr;
+    }
+    
+    if (rtspServer) {
+        debug_print("Cleanup", "Cleaning up RTSP server");
+        g_object_unref(rtspServer);
+        rtspServer = nullptr;
     }
     
     debug_print("Cleanup", "Quitting GTK main loop");

@@ -1,0 +1,63 @@
+2025-03-05 15:09:09,441 - UDPVideoReceiver - INFO - Starting UDP receiver on 0.0.0.0:5000
+2025-03-05 15:09:09,441 - UDPVideoReceiver - INFO - Initializing UDPVideoReceiver on 0.0.0.0:5000
+2025-03-05 15:09:09,441 - UDPVideoReceiver - INFO - Socket bound successfully to 0.0.0.0:5000
+2025-03-05 15:09:09,441 - UDPVideoReceiver - DEBUG - GStreamer pipeline: udpsrc port=5000 caps="application/x-rtp, media=video, encoding-name=H264, payload=96" ! rtph264depay ! h264parse ! avdec_h264 ! videoconvert ! appsink
+2025-03-05 15:09:09,441 - UDPVideoReceiver - INFO - Hardware acceleration may be available
+2025-03-05 15:09:09,456 - UDPVideoReceiver - ERROR - Failed to open GStreamer pipeline
+2025-03-05 15:09:09,456 - UDPVideoReceiver - ERROR - Initialization error: Failed to open GStreamer pipeline
+2025-03-05 15:09:09,456 - UDPVideoReceiver - ERROR - Traceback (most recent call last):
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/udp-receiver-debug.py", line 65, in __init__
+    raise RuntimeError("Failed to open GStreamer pipeline")
+RuntimeError: Failed to open GStreamer pipeline
+
+2025-03-05 15:09:09,456 - UDPVideoReceiver - ERROR - Exception in main loop: Failed to open GStreamer pipeline
+2025-03-05 15:09:09,456 - UDPVideoReceiver - ERROR - Traceback (most recent call last):
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/udp-receiver-debug.py", line 191, in <module>
+    receiver = UDPVideoReceiver(host=args.host, port=args.port)
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/udp-receiver-debug.py", line 65, in __init__
+    raise RuntimeError("Failed to open GStreamer pipeline")
+RuntimeError: Failed to open GStreamer pipeline
+
+2025-03-05 15:09:09,457 - UDPVideoReceiver - INFO - Application shutdown complete
+2025-03-05 15:09:49,510 - UDPVideoReceiver - INFO - Starting UDP receiver on 0.0.0.0:5000
+2025-03-05 15:09:49,510 - UDPVideoReceiver - INFO - Initializing UDPVideoReceiver on 0.0.0.0:5000
+2025-03-05 15:09:49,510 - UDPVideoReceiver - INFO - Socket bound successfully to 0.0.0.0:5000
+2025-03-05 15:09:49,511 - UDPVideoReceiver - DEBUG - GStreamer pipeline: udpsrc port=5000 caps="application/x-rtp, media=video, encoding-name=H264, payload=96" ! rtph264depay ! h264parse ! avdec_h264 ! videoconvert ! appsink
+2025-03-05 15:09:49,511 - UDPVideoReceiver - INFO - Hardware acceleration may be available
+2025-03-05 15:09:49,524 - UDPVideoReceiver - ERROR - Failed to open GStreamer pipeline
+2025-03-05 15:09:49,524 - UDPVideoReceiver - ERROR - Initialization error: Failed to open GStreamer pipeline
+2025-03-05 15:09:49,524 - UDPVideoReceiver - ERROR - Traceback (most recent call last):
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/udp-receiver-debug.py", line 65, in __init__
+    raise RuntimeError("Failed to open GStreamer pipeline")
+RuntimeError: Failed to open GStreamer pipeline
+
+2025-03-05 15:09:49,524 - UDPVideoReceiver - ERROR - Exception in main loop: Failed to open GStreamer pipeline
+2025-03-05 15:09:49,524 - UDPVideoReceiver - ERROR - Traceback (most recent call last):
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/udp-receiver-debug.py", line 191, in <module>
+    receiver = UDPVideoReceiver(host=args.host, port=args.port)
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/udp-receiver-debug.py", line 65, in __init__
+    raise RuntimeError("Failed to open GStreamer pipeline")
+RuntimeError: Failed to open GStreamer pipeline
+
+2025-03-05 15:09:49,524 - UDPVideoReceiver - INFO - Application shutdown complete
+2025-03-05 16:52:08,998 - UDPVideoReceiver - INFO - Starting UDP receiver on 0.0.0.0:5000
+2025-03-05 16:52:08,998 - UDPVideoReceiver - INFO - Initializing UDPVideoReceiver on 0.0.0.0:5000
+2025-03-05 16:52:08,998 - UDPVideoReceiver - INFO - Socket bound successfully to 0.0.0.0:5000
+2025-03-05 16:52:08,998 - UDPVideoReceiver - DEBUG - GStreamer pipeline: udpsrc port=5000 caps="application/x-rtp, media=video, encoding-name=H264, payload=96" ! rtph264depay ! h264parse ! avdec_h264 ! videoconvert ! appsink
+2025-03-05 16:52:08,998 - UDPVideoReceiver - INFO - Hardware acceleration may be available
+2025-03-05 16:52:09,011 - UDPVideoReceiver - ERROR - Failed to open GStreamer pipeline
+2025-03-05 16:52:09,011 - UDPVideoReceiver - ERROR - Initialization error: Failed to open GStreamer pipeline
+2025-03-05 16:52:09,012 - UDPVideoReceiver - ERROR - Traceback (most recent call last):
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/udp-receiver-debug.py", line 65, in __init__
+    raise RuntimeError("Failed to open GStreamer pipeline")
+RuntimeError: Failed to open GStreamer pipeline
+
+2025-03-05 16:52:09,012 - UDPVideoReceiver - ERROR - Exception in main loop: Failed to open GStreamer pipeline
+2025-03-05 16:52:09,012 - UDPVideoReceiver - ERROR - Traceback (most recent call last):
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/udp-receiver-debug.py", line 191, in <module>
+    receiver = UDPVideoReceiver(host=args.host, port=args.port)
+  File "/home/aris/Desktop/Maya_Illusion/PyBridge/udp-receiver-debug.py", line 65, in __init__
+    raise RuntimeError("Failed to open GStreamer pipeline")
+RuntimeError: Failed to open GStreamer pipeline
+
+2025-03-05 16:52:09,012 - UDPVideoReceiver - INFO - Application shutdown complete

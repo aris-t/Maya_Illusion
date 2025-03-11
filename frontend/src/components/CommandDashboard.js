@@ -8,19 +8,15 @@ import {
 const CommandDashboard = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [systemMetrics, setSystemMetrics] = useState({
-    securityLevel: 'CRITICAL',
-    powerOutput: 78,
     networkStatus: 'CONNECTED',
     activeAgents: 4,
-    threatLevel: 'MODERATE',
-    scanProgress: 63
   });
   
   // Mock command history
   const [commandHistory, setCommandHistory] = useState([
-    { id: 1, time: '10:24:13.05', command: 'DEPLOY UNIT 42', status: 'COMPLETED' },
-    { id: 2, time: '10:30:47.23', command: 'ACTIVATE SECURITY PROTOCOL', status: 'IN PROGRESS' },
-    { id: 3, time: '10:32:18.97', command: 'SCAN PERIMETER', status: 'PENDING' },
+    { id: 1, time: '10:24:13.05', command: 'THING 1', status: 'COMPLETED' },
+    { id: 2, time: '10:30:47.23', command: 'THING 2', status: 'IN PROGRESS' },
+    { id: 3, time: '10:32:18.97', command: 'THING 3', status: 'PENDING' },
   ]);
   
   useEffect(() => {
@@ -61,10 +57,6 @@ const CommandDashboard = () => {
           <div className="relative flex items-center">
             <span className="text-sm tracking-wider">{formatTime(currentTime)}</span>
           </div>
-          <div className="relative flex items-center">
-            <Lock className="h-4 w-4 mr-2 text-red-400" />
-            <span className="text-sm tracking-wider text-red-400">RESTRICTED ACCESS</span>
-          </div>
         </div>
       </div>
       
@@ -73,7 +65,7 @@ const CommandDashboard = () => {
         <div className="flex items-center justify-between mb-4">
           <div className="text-xs tracking-widest opacity-80 flex items-center">
             <Terminal className="h-4 w-4 mr-2" />
-            COMMAND TERMINAL
+            LOG
           </div>
           <div className="flex space-x-2">
             <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
@@ -109,7 +101,7 @@ const CommandDashboard = () => {
         <div className="flex items-center justify-between mb-4">
           <div className="text-xs tracking-widest opacity-80 flex items-center">
             <Shield className="h-4 w-4 mr-2" />
-            SECURITY DASHBOARD
+            DASHBOARD
           </div>
           <div className="flex items-center text-xs">
             <RefreshCw className="h-3 w-3 mr-1" />
@@ -154,7 +146,7 @@ const CommandDashboard = () => {
         <div className="flex items-center justify-between mb-4">
           <div className="text-xs tracking-widest opacity-80 flex items-center">
             <Eye className="h-4 w-4 mr-2" />
-            SURVEILLANCE & MAPPING
+            MAPPING
           </div>
           <div className="flex space-x-4">
             <button className="text-xs border border-blue-400/50 px-2 py-1 bg-gray-900/40">GRID VIEW</button>
@@ -168,7 +160,7 @@ const CommandDashboard = () => {
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center">
                 <div className="text-3xl text-blue-400/30">MAP DISPLAY</div>
-                <div className="text-xs text-blue-300 mt-2">TACTICAL OVERLAY ACTIVE</div>
+                <div className="text-xs text-blue-300 mt-2">Filler</div>
               </div>
             </div>
             
@@ -207,7 +199,7 @@ const CommandDashboard = () => {
               <div className="border border-yellow-400/50 bg-yellow-500/10 p-2 flex items-start">
                 <AlertTriangle className="h-3 w-3 text-yellow-400 mr-2 flex-shrink-0 mt-0.5" />
                 <div className="text-xs text-yellow-200">
-                  Unauthorized access attempt detected in Sector 7.
+                  Filler Text
                 </div>
               </div>
             </div>
@@ -219,20 +211,18 @@ const CommandDashboard = () => {
       <div className="absolute bottom-0 left-0 right-0 flex justify-between items-center px-4 py-2 border-t border-blue-400/30 bg-gray-900/60 text-xs">
         <div className="flex items-center">
           <div className="w-2 h-2 rounded-full bg-green-400 mr-2"></div>
-          <span>ADMIN CONSOLE // LEVEL 5 CLEARANCE</span>
+          <span>ADMIN CONSOLE</span>
         </div>
         
         <div className="flex space-x-6">
           <div className="flex items-center text-green-400">
             <div className="w-1 h-1 rounded-full bg-green-400 mr-1 animate-pulse"></div>
-            SECURE CONNECTION
+            CONNECTED
           </div>
-          <div>BUILD 43.5.9-ALPHA</div>
+          <div>BUILD 0.0.1-ALPHA</div>
         </div>
       </div>
       
-      {/* Scanning line effect */}
-      <div className="scan-line"></div>
     </div>
   );
 };

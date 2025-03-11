@@ -103,7 +103,6 @@ export const getMockPolygonData = () => {
       ],
       metadata: {
         type: 'Unknown',
-        threat: 'Low'
       }
     },
     {
@@ -137,8 +136,7 @@ export const getMockPolygonData = () => {
         { x: 410, y: 470 }
       ],
       metadata: {
-        type: 'Device',
-        threat: 'None'
+        type: 'Device'
       }
     }
   ];

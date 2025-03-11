@@ -1,22 +1,20 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import DetroitOverlay from './components/DetroitOverlay';
 import CommandDashboard from './components/CommandDashboard';
 import AIController from './components/AIController';
 
 function App() {
-  // Import the image from the public folder
-  const backgroundImage = process.env.PUBLIC_URL + '/image.png';
-
+  // Toggle between mock data and WebSocket
+  const [useMockData, setUseMockData] = useState(true);
+  
   return (
     <Router>
       <div className="App">
         <div className="video-container relative">
-          <img 
-            src={backgroundImage} 
-            alt="Background" 
-            className="w-full h-screen object-cover"
-          />
+          {/* The div below is our transparent container, no background image anymore */}
+          <div className="w-full h-screen bg-transparent"></div>
+          
           <Routes>
             <Route 
               path="/" 
@@ -27,7 +25,18 @@ function App() {
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <div className="text-white text-2xl font-thin">+</div>
                   </div>
-                  <AIController useMockData={true} />
+                  
+                  {/* Data source toggle button */}
+                  <div className="absolute bottom-8 left-8 z-40">
+                    <button 
+                      onClick={() => setUseMockData(!useMockData)}
+                      className="bg-gray-900/80 border border-blue-400/50 px-3 py-2 text-blue-100 font-mono text-xs"
+                    >
+                      {useMockData ? 'USING MOCK DATA' : 'USING WEBSOCKET'}
+                    </button>
+                  </div>
+                  
+                  <AIController useMockData={useMockData} />
                 </>
               } 
             />
@@ -36,7 +45,6 @@ function App() {
               element={
                 <>
                   <CommandDashboard />
-                  <AIController useMockData={true} />
                 </>
               } 
             />

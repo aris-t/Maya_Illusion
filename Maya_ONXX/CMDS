@@ -1,0 +1,1 @@
+g++ -o yolo_detection yolo_detection.cpp `pkg-config --cflags --libs gstreamer-1.0` -I/opt/nvidia/deepstream/deepstream/sources/includes
